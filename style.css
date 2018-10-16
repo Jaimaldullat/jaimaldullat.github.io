@@ -95,8 +95,14 @@ body {
     left: 50%;
     width: 100%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -80%);
     text-align: center;
+}
+
+.page-header .content-center .profile-pic {
+    width: 15%;
+    border-radius: 50%;
+    box-shadow: 0 31px 25px 0 rgba(0, 0, 0, 0.8);
 }
 
 .clear-filter[filter-color=orange] {
