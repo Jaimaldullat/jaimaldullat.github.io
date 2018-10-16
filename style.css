@@ -100,7 +100,7 @@ body {
 }
 
 .page-header .content-center .profile-pic {
-    width: 15%;
+    width: 200px;
     border-radius: 50%;
     box-shadow: 0 31px 25px 0 rgba(0, 0, 0, 0.8);
 }
