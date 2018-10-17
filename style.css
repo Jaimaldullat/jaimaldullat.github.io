@@ -126,6 +126,10 @@ body {
     padding: 6px 0;
 }
 
+.content-center .text-wrapper .tag-line {
+    margin: 0;
+}
+
 .content-center .user-name {
     font-family: "HFontleroyBrownNF";
     font-size: 5rem;
