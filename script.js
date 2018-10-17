@@ -1,5 +1,9 @@
 /* TEXT typing effect  */
 /*jslint node: true */
+/*jslint browser: true, devel: true */
+/*global window*/
+/*global document*/
+/*eslint no-undef: "error"*/
 var TxtRotate = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
