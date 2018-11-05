@@ -1916,15 +1916,14 @@ a.btn-outline-success:focus {
 /******************* 
 Section Header
 *******************/
-.page-wrapper {
-    padding-top: 0px;
-}
 
 #main-wrapper {
     overflow: hidden;
 }
 
 .section-header {
+    margin-top: 20px;
+
     h1 {
         font-weight: 700;
         line-height: 56px;
