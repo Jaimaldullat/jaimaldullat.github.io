@@ -1928,7 +1928,7 @@ Section Navbar and Header
 }
 
 .h1-nav {
-    padding: 15px 0;
+    padding: 2px 0;
 }
 
 .h1-nav .navbar-brand img {
@@ -1962,7 +1962,7 @@ Section Navbar and Header
     height: 500px;
     background-position: right;
     position: relative;
-    margin-top: 100px;
+    margin-top: 70px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
