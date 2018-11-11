@@ -1931,6 +1931,13 @@ Section Navbar and Header
     padding: 2px 0;
 }
 
+.h1-nav .social-icon {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
 .h1-nav .navbar-brand img {
     width: 65px;
 
