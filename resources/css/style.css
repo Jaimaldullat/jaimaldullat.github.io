@@ -1958,7 +1958,7 @@ Section Navbar and Header
 }
 
 .h1-nav .navbar-nav .nav-item:last-child {
-    margin-right: 0px;
+    /*margin-right: 0px;*/
 }
 
 
