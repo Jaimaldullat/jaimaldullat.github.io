@@ -190,6 +190,31 @@ a.white-link:focus {
     border-radius: 50%;
 }
 
+.icon-round {
+    width: 80px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+/******************* 
+card
+*******************/
+.card {
+    border: 0px;
+    margin-bottom: 30px;
+}
+
+.card.card-shadow {
+    -webkit-box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+    box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
+}
+
+.card-group .card {
+    border: 1px solid rgba(120, 130, 140, 0.13);
+    margin-bottom: 30px;
+}
 
 /*******************
 Headings
@@ -1953,6 +1978,10 @@ Section Navbar and Header
     font-weight: 400;
 }
 
+.h1-nav .navbar-nav .nav-item.active .nav-link {
+    color: #2cdd9b;
+}
+
 .h1-nav .navbar-nav .nav-item .nav-link:hover {
     color: #2cdd9b;
 }
@@ -1966,7 +1995,7 @@ Section Navbar and Header
     background: url(images/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 580px;
     background-position: right;
     position: relative;
     margin-top: 70px;
@@ -2011,5 +2040,50 @@ Section Navbar and Header
             line-height: 36px;
             font-size: 24px;
         }
+    }
+}
+
+
+/******************* 
+Section About
+*******************/
+.testimonial2 .testi2 .image-thumb {
+    background: url(images/greadint-bg.png) no-repeat top center;
+    text-align: center;
+    padding: 10% 0;
+}
+
+.testimonial2 .testi2 .image-thumb img {
+    width: 400px;
+}
+
+.testimonial2 .testi2 .owl-dots {
+    display: inline-block;
+    position: relative;
+    top: -100px;
+}
+
+.testimonial2 .testi2 .owl-dots .owl-dot {
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    margin-right: 10px;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.testimonial2 .testi2 .owl-dots .owl-dot span {
+    display: none;
+}
+
+.testimonial2 .testi2 .owl-dots .owl-dot.active,
+.testimonial2 .testi2 .owl-dots .owl-dot:hover {
+    opacity: 1;
+}
+
+@media (max-width: 767px) {
+    .testimonial2 .testi2 .owl-dots {
+        top: 0px;
     }
 }
