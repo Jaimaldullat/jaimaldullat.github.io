@@ -2051,6 +2051,7 @@ Section About
     background: url(images/greadint-bg.png) no-repeat top center;
     text-align: center;
     padding: 10% 0;
+    background-size: cover;
 }
 
 .testimonial2 .testi2 .image-thumb img {
