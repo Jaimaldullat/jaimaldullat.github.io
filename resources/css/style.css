@@ -1952,6 +1952,8 @@ Section Navbar and Header
     width: 100%;
     background: #fff;
     bottom: 0;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 .h1-nav {
@@ -2029,6 +2031,7 @@ Section Navbar and Header
 #back-canvas {
     position: absolute;
     width: 100%;
+    top: 0;
 }
 
 .static-slider1 .intro {}
