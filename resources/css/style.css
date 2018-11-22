@@ -1995,7 +1995,7 @@ Section Navbar and Header
 
 .static-slider1 {
     background-color: #555;
-    height: 100vh;
+    height: Calc(100vh + 81px);
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
