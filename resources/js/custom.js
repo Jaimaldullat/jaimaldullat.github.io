@@ -358,7 +358,7 @@ var lastId,
 // Bind click handler to menu items
 // so we can get a fancy scroll animation
 menuItems.click(function (e) {
-    $('.navbar-toggler').click(); //bootstrap 4.x
+    $('#header1').collapse('hide');
     var href = $(this).attr("href"),
         offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
     $('html, body').stop().animate({
