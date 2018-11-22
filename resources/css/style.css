@@ -2022,8 +2022,13 @@ Section Navbar and Header
 
 }
 
+.gradient-line {
+    height: 2px;
+}
+
 #back-canvas {
     position: absolute;
+    width: 100%;
 }
 
 .static-slider1 .intro {}
