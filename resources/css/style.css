@@ -154,6 +154,7 @@ html {
     position: relative;
     min-height: 100%;
     background: #ffffff;
+    scroll-behavior: smooth;
 }
 
 a:hover,
@@ -1992,13 +1993,9 @@ Section Navbar and Header
 
 
 .static-slider1 {
-    background: url(images/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 580px;
-    background-position: right;
+    background-color: #555;
+    height: 100vh;
     position: relative;
-    margin-top: 70px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2022,12 +2019,13 @@ Section Navbar and Header
     }
 
 
-
 }
 
-.static-slider1 .intro {
+#back-canvas {
     position: absolute;
 }
+
+.static-slider1 .intro {}
 
 .static-slider1 .intro h1 {
     color: #fff;
@@ -2090,5 +2088,15 @@ Section About
 
     .owl-carousel .row .img {
         width: 60%;
+    }
+}
+
+/******************* 
+Section Footer
+*******************/
+.footer1 {
+    .f1-bottom-bar {
+        padding: 20px 0;
+        border-top: 1px solid $border;
     }
 }
