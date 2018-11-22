@@ -74,281 +74,241 @@ $(function () {
 
 
 // Canvas Background
-var canvas = document.getElementById('back-canvas'),
-    can_w = parseInt(canvas.getAttribute('width')),
-    can_h = parseInt(canvas.getAttribute('height')),
-    ctx = canvas.getContext('2d');
+var TWO_PI = Math.PI * 2;
+var HALF_PI = Math.PI * 0.5;
+var THICKNESS = 12;
+var LENGTH = 10;
+var STEP = 0.1;
+var FPS = 1000 / 60;
 
-// console.log(typeof can_w);
+function Particle(x, y, mass) {
 
-var ball = {
-        x: 0,
-        y: 0,
-        vx: 0,
-        vy: 0,
-        r: 0,
-        alpha: 1,
-        phase: 0
-    },
-    ball_color = {
-        r: 207,
-        g: 255,
-        b: 4
-    },
-    R = 2,
-    balls = [],
-    alpha_f = 0.03,
-    alpha_phase = 0,
+    this.x = x || 0;
+    this.y = y || 0;
+    this.ox = this.x;
+    this.oy = this.y;
+    this.mass = mass || 1.0;
+    this.massInv = 1.0 / this.mass;
+    this.fixed = false;
 
-    // Line
-    link_line_width = 0.8,
-    dis_limit = 260,
-    add_mouse_point = true,
-    mouse_in = false,
-    mouse_ball = {
-        x: 0,
-        y: 0,
-        vx: 0,
-        vy: 0,
-        r: 0,
-        type: 'mouse'
+    this.update = function (dt) {
+        if (!this.fixed) {
+            var fx = 0.0000;
+            var fy = 0.0000;
+            var tx = this.x,
+                ty = this.y;
+
+            this.x += (this.x - this.ox) + fx * this.massInv * dt * dt;
+            this.y += (this.y - this.oy) + fy * this.massInv * dt * dt;
+            this.ox = tx;
+            this.oy = ty;
+        }
     };
+};
 
-// Random speed
-function getRandomSpeed(pos) {
-    var min = -1,
-        max = 1;
-    switch (pos) {
-        case 'top':
-            return [randomNumFrom(min, max), randomNumFrom(0.1, max)];
-            break;
-        case 'right':
-            return [randomNumFrom(min, -0.1), randomNumFrom(min, max)];
-            break;
-        case 'bottom':
-            return [randomNumFrom(min, max), randomNumFrom(min, -0.1)];
-            break;
-        case 'left':
-            return [randomNumFrom(0.1, max), randomNumFrom(min, max)];
-            break;
-        default:
-            return;
-            break;
-    }
-}
+function Spring(p1, p2, restLength, strength) {
 
-function randomArrayItem(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-}
+    this.p1 = p1;
+    this.p2 = p2;
+    this.restLength = restLength || 10;
+    this.strength = strength || 1.0;
 
-function randomNumFrom(min, max) {
-    return Math.random() * (max - min) + min;
-}
-console.log(randomNumFrom(0, 10));
-// Random Ball
-function getRandomBall() {
-    var pos = randomArrayItem(['top', 'right', 'bottom', 'left']);
-    switch (pos) {
-        case 'top':
-            return {
-                x: randomSidePos(can_w),
-                y: -R,
-                vx: getRandomSpeed('top')[0],
-                vy: getRandomSpeed('top')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-        case 'right':
-            return {
-                x: can_w + R,
-                y: randomSidePos(can_h),
-                vx: getRandomSpeed('right')[0],
-                vy: getRandomSpeed('right')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-        case 'bottom':
-            return {
-                x: randomSidePos(can_w),
-                y: can_h + R,
-                vx: getRandomSpeed('bottom')[0],
-                vy: getRandomSpeed('bottom')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-        case 'left':
-            return {
-                x: -R,
-                y: randomSidePos(can_h),
-                vx: getRandomSpeed('left')[0],
-                vy: getRandomSpeed('left')[1],
-                r: R,
-                alpha: 1,
-                phase: randomNumFrom(0, 10)
-            }
-            break;
-    }
-}
+    this.update = function (dt) {
 
-function randomSidePos(length) {
-    return Math.ceil(Math.random() * length);
-}
+        // Compute desired force
+        var dx = p2.x - p1.x,
+            dy = p2.y - p1.y,
+            dd = Math.sqrt(dx * dx + dy * dy) + 0.0001,
+            tf = (dd - this.restLength) / (dd * (p1.massInv + p2.massInv)) * this.strength,
+            f;
 
-// Draw Ball
-function renderBalls() {
-    Array.prototype.forEach.call(balls, function (b) {
-        if (!b.hasOwnProperty('type')) {
-            ctx.fillStyle = 'rgba(' + ball_color.r + ',' + ball_color.g + ',' + ball_color.b + ',' + b.alpha + ')';
-            ctx.beginPath();
-            ctx.arc(b.x, b.y, R, 0, Math.PI * 2, true);
-            ctx.closePath();
-            ctx.fill();
+        // Apply forces
+        if (!p1.fixed) {
+            f = tf * p1.massInv;
+            p1.x += dx * f;
+            p1.y += dy * f;
         }
+
+        if (!p2.fixed) {
+            f = -tf * p2.massInv;
+            p2.x += dx * f;
+            p2.y += dy * f;
+        }
+    }
+};
+
+function Sim() {
+
+    this.particles = [];
+    this.springs = [];
+
+    this.tick = function (dt) {
+
+        var i, n;
+
+        for (i = 0, n = this.springs.length; i < n; ++i) {
+            this.springs[i].update(dt);
+        }
+
+        for (i = 0, n = this.particles.length; i < n; ++i) {
+            this.particles[i].update(dt);
+        }
+    }
+};
+
+// Create a new system
+var sim = new Sim(),
+    old = new Date().getTime(),
+    canvas = document.getElementById('back-canvas'),
+    context = canvas.getContext('2d');
+
+function init() {
+
+    var np,
+        op,
+        mouse,
+        anchor,
+        step = STEP,
+        length = LENGTH,
+        count = length / step;
+
+    var sx = canvas.width * 0.5;
+    var sy = canvas.height * 0.5;
+
+    for (var i = 0; i < count; ++i) {
+
+        //np = new Particle(i*8,i*8,0.1+Math.random()*0.01);
+        np = new Particle(sx + (Math.random() - 0.5) * 200, sy + (Math.random() - 0.5) * 200, 0.1 + Math.random() * 0.01);
+        sim.particles.push(np);
+
+        if (i > 0) {
+            s = new Spring(np, op, step, 0.95);
+            sim.springs.push(s);
+        }
+
+        op = np;
+    }
+
+    // Fix the first particle
+    anchor = sim.particles[0];
+    //anchor.fixed = true;
+    anchor.x = 50;
+    anchor.y = 50;
+
+    // Move last particle with mouse
+    mouse = sim.particles[count - 1];
+    mouse.fixed = true;
+
+    canvas.addEventListener('mousemove', function (event) {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
     });
-}
+};
 
-// Update balls
-function updateBalls() {
-    var new_balls = [];
-    Array.prototype.forEach.call(balls, function (b) {
-        b.x += b.vx;
-        b.y += b.vy;
+function step() {
 
-        if (b.x > -(50) && b.x < (can_w + 50) && b.y > -(50) && b.y < (can_h + 50)) {
-            new_balls.push(b);
-        }
+    var now = new Date().getTime(),
+        delta = now - old;
 
-        // alpha change
-        b.phase += alpha_f;
-        b.alpha = Math.abs(Math.cos(b.phase));
-        // console.log(b.alpha);
-    });
+    sim.tick(delta);
 
-    balls = new_balls.slice(0);
-}
+    // Clear canvas
+    canvas.width = canvas.width;
 
-// loop alpha
-function loopAlphaInf() {
+    var points = []; // Midpoints
+    var angles = []; // Delta angles
 
-}
+    var i, n, p1, p2, dx, dy, mx, my, sin, cos, theta;
 
-// Draw lines
-function renderLines() {
-    var fraction, alpha;
-    for (var i = 0; i < balls.length; i++) {
-        for (var j = i + 1; j < balls.length; j++) {
+    // Compute midpoints and angles
+    for (i = 0, n = sim.particles.length - 1; i < n; ++i) {
 
-            fraction = getDisOf(balls[i], balls[j]) / dis_limit;
+        p1 = sim.particles[i];
+        p2 = sim.particles[i + 1];
 
-            if (fraction < 1) {
-                alpha = (1 - fraction).toString();
+        dx = p2.x - p1.x;
+        dy = p2.y - p1.y;
 
-                ctx.strokeStyle = 'rgba(150,150,150,' + alpha + ')';
-                ctx.lineWidth = link_line_width;
+        mx = p1.x + dx * 0.5;
+        my = p1.y + dy * 0.5;
 
-                ctx.beginPath();
-                ctx.moveTo(balls[i].x, balls[i].y);
-                ctx.lineTo(balls[j].x, balls[j].y);
-                ctx.stroke();
-                ctx.closePath();
-            }
-        }
+        points[i] = {
+            x: mx,
+            y: my
+        };
+        angles[i] = Math.atan2(dy, dx);
     }
-}
 
-// calculate distance between two points
-function getDisOf(b1, b2) {
-    var delta_x = Math.abs(b1.x - b2.x),
-        delta_y = Math.abs(b1.y - b2.y);
+    // Render
+    context.beginPath();
 
-    return Math.sqrt(delta_x * delta_x + delta_y * delta_y);
-}
+    for (i = 0, n = points.length; i < n; ++i) {
 
-// add balls if there a little balls
-function addBallIfy() {
-    if (balls.length < 20) {
-        balls.push(getRandomBall());
+        p1 = sim.particles[i];
+        p2 = points[i];
+
+        theta = angles[i];
+
+        r = Math.sin((i / n) * Math.PI) * THICKNESS;
+        sin = Math.sin(theta - HALF_PI) * r;
+        cos = Math.cos(theta - HALF_PI) * r;
+
+        context.quadraticCurveTo(
+            p1.x + cos,
+            p1.y + sin,
+            p2.x + cos,
+            p2.y + sin);
     }
-}
 
-// Render
-function render() {
-    ctx.clearRect(0, 0, can_w, can_h);
+    for (i = points.length - 1; i >= 0; --i) {
 
-    renderBalls();
+        p1 = sim.particles[i + 1];
+        p2 = points[i];
 
-    renderLines();
+        theta = angles[i];
 
-    updateBalls();
+        r = Math.sin((i / n) * Math.PI) * THICKNESS;
+        sin = Math.sin(theta + HALF_PI) * r;
+        cos = Math.cos(theta + HALF_PI) * r;
 
-    addBallIfy();
+        context.quadraticCurveTo(
+            p1.x + cos,
+            p1.y + sin,
+            p2.x + cos,
+            p2.y + sin);
 
-    window.requestAnimationFrame(render);
-}
-
-// Init Balls
-function initBalls(num) {
-    for (var i = 1; i <= num; i++) {
-        balls.push({
-            x: randomSidePos(can_w),
-            y: randomSidePos(can_h),
-            vx: getRandomSpeed('top')[0],
-            vy: getRandomSpeed('top')[1],
-            r: R,
-            alpha: 1,
-            phase: randomNumFrom(0, 10)
-        });
     }
-}
-// Init Canvas
-function initCanvas() {
-    canvas.setAttribute('width', window.innerWidth);
-    canvas.setAttribute('height', window.innerHeight);
 
-    can_w = parseInt(canvas.getAttribute('width'));
-    can_h = parseInt(canvas.getAttribute('height'));
-}
-window.addEventListener('resize', function (e) {
-    console.log('Window Resize...');
-    initCanvas();
-});
+    context.strokeStyle = 'rgba(255,255,255,0.1)';
+    context.lineWidth = 8;
+    context.stroke();
 
-function goMovie() {
-    initCanvas();
-    initBalls(30);
-    window.requestAnimationFrame(render);
-}
-goMovie();
+    context.strokeStyle = 'rgba(0,0,0,0.8)';
+    context.lineWidth = 0.5;
+    context.stroke();
 
-// Mouse effect
-canvas.addEventListener('mouseenter', function () {
-    console.log('mouseenter');
-    mouse_in = true;
-    balls.push(mouse_ball);
-});
-canvas.addEventListener('mouseleave', function () {
-    console.log('mouseleave');
-    mouse_in = false;
-    var new_balls = [];
-    Array.prototype.forEach.call(balls, function (b) {
-        if (!b.hasOwnProperty('type')) {
-            new_balls.push(b);
-        }
-    });
-    balls = new_balls.slice(0);
-});
-canvas.addEventListener('mousemove', function (e) {
-    var e = e || window.event;
-    mouse_ball.x = e.pageX;
-    mouse_ball.y = e.pageY;
-    // console.log(mouse_ball);
-});
+    context.fillStyle = 'rgba(255,255,255,0.9)';
+    context.fill();
+
+    old = now;
+
+    setTimeout(step, FPS);
+};
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resize);
+resize();
+
+init();
+step();
+
+
+
+
 
 // Fixed navbar 
 $(document).ready(function () {
@@ -361,7 +321,6 @@ $(document).ready(function () {
             $('.header1').css({
                 "position": "fixed",
                 "top": "0",
-
                 "bottom": "auto"
             });
         } else {
