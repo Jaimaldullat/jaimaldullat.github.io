@@ -2054,7 +2054,8 @@ Section Navbar and Header
 /******************* 
 Section About
 *******************/
-.testimonial2 .testi2 .image-thumb {
+
+.section-about .testimonial2 .testi2 .image-thumb {
     background: url(images/greadint-bg.png) no-repeat top center;
     text-align: center;
     padding: 10% 0;
