@@ -146,7 +146,7 @@ body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     overflow-x: hidden;
-    color: #8d97ad;
+    color: #616161;
     font-weight: 300;
 }
 
@@ -1875,7 +1875,7 @@ h1.section-heading {
     font-family: 'Lobster', helvetica, arial;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), color-stop(50%, rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 1)));
     font-size: 48px;
-    margin-bottom: 28px;
+    margin-bottom: 34px;
     padding-bottom: 2px;
     line-height: 139%;
 }
@@ -2120,6 +2120,12 @@ Section About
 /******************* 
 Section Footer
 *******************/
+footer {
+    background-color: #555;
+    color: #fff;
+    padding: 20px;
+}
+
 .footer1 {
     .f1-bottom-bar {
         padding: 20px 0;

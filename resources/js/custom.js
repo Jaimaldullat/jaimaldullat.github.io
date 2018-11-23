@@ -355,9 +355,7 @@ var lastId,
         }
     });
 
-// Bind click handler to menu items
-// so we can get a fancy scroll animation
-menuItems.click(function (e) {
+function scrollPage(e) {
     $('#header1').collapse('hide');
     var href = $(this).attr("href"),
         offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
@@ -365,7 +363,14 @@ menuItems.click(function (e) {
         scrollTop: offsetTop
     }, 50);
     e.preventDefault();
-});
+
+}
+// Bind click handler to menu items
+// so we can get a fancy scroll animation
+menuItems.click(scrollPage);
+
+// On button click scroll effect
+$('.btn-mywork').click(scrollPage);
 
 // Bind to scroll
 $(window).scroll(function () {
