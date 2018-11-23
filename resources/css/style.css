@@ -1870,6 +1870,21 @@ a.btn-outline-success:focus {
 /*-------------------*/
 /*Bootstrap 4 hack*/
 /*-------------------*/
+
+h1.section-heading {
+    font-family: 'Lobster', helvetica, arial;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), color-stop(50%, rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 1)));
+    font-size: 48px;
+    margin-bottom: 28px;
+    padding-bottom: 2px;
+    line-height: 139%;
+}
+
+h1.section-heading span {
+    border-bottom: 2px solid #8d97ad;
+    padding-bottom: 2px;
+}
+
 .card-columns {
     -webkit-column-gap: 30px;
     column-gap: 30px;
@@ -2055,7 +2070,8 @@ Section Navbar and Header
 Section About
 *******************/
 
-.section-about .testimonial2 .testi2 .image-thumb {
+
+.testimonial2 .testi2 .image-thumb {
     background: url(images/greadint-bg.png) no-repeat top center;
     text-align: center;
     padding: 10% 0;
