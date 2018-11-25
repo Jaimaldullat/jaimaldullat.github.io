@@ -1902,53 +1902,7 @@ h1.section-heading span {
     display: none !important;
 }
 
-@media (max-width: 575px) {
-    .hidden-xs-down {
-        display: none !important;
-    }
-}
 
-@media (min-width: 576px) {
-    .hidden-sm-up {
-        display: none !important;
-    }
-}
-
-@media (max-width: 767px) {
-    .hidden-sm-down {
-        display: none !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .hidden-md-up {
-        display: none !important;
-    }
-}
-
-@media (max-width: 991px) {
-    .hidden-md-down {
-        display: none !important;
-    }
-}
-
-@media (min-width: 992px) {
-    .hidden-lg-up {
-        display: none !important;
-    }
-}
-
-@media (max-width: 1199px) {
-    .hidden-lg-down {
-        display: none !important;
-    }
-}
-
-@media (min-width: 1200px) {
-    .hidden-xl-up {
-        display: none !important;
-    }
-}
 
 .hidden-xl-down {
     display: none !important;
@@ -2055,15 +2009,6 @@ Section Navbar and Header
     color: #fff;
 }
 
-@media(max-width:767px) {
-    .static-slider1 {
-        h1 {
-            font-weight: 700;
-            line-height: 36px;
-            font-size: 24px;
-        }
-    }
-}
 
 
 /******************* 
@@ -2107,15 +2052,15 @@ Section About
     opacity: 1;
 }
 
-@media (max-width: 767px) {
-    .testimonial2 .testi2 .owl-dots {
-        top: 0px;
-    }
 
-    .owl-carousel .row .img {
-        width: 60%;
-    }
+
+/******************* 
+Section Contact
+*******************/
+.section-contact {
+    padding-bottom: 40px;
 }
+
 
 /******************* 
 Section Footer
@@ -2130,5 +2075,69 @@ footer {
     .f1-bottom-bar {
         padding: 20px 0;
         border-top: 1px solid $border;
+    }
+}
+
+@media (max-width: 575px) {
+    .hidden-xs-down {
+        display: none !important;
+    }
+}
+
+@media (min-width: 576px) {
+    .hidden-sm-up {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .hidden-sm-down {
+        display: none !important;
+    }
+
+    .static-slider1 {
+        h1 {
+            font-weight: 700;
+            line-height: 36px;
+            font-size: 24px;
+        }
+    }
+
+    .testimonial2 .testi2 .owl-dots {
+        top: 0px;
+    }
+
+    .owl-carousel .row .img {
+        width: 60%;
+    }
+}
+
+@media (min-width: 768px) {
+    .hidden-md-up {
+        display: none !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .hidden-md-down {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .hidden-lg-up {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .hidden-lg-down {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hidden-xl-up {
+        display: none !important;
     }
 }
