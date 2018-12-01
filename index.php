@@ -50,7 +50,7 @@
         <!-- ============= -->
         <!-- Section Header -->
         <!-- ============= -->
-        <section class="static-slider1" id="section-header">
+        <section class="section-header" id="section-header">
             <canvas id="back-canvas" width="100vw" height="">
             </canvas>
             <div class="container">
@@ -61,9 +61,9 @@
                     </div>
                 </div>
             </div>
-            <div class="header1 po-relative">
+            <div class="header">
                 <div class="container">
-                    <!-- Header 1 code -->
+                    <!-- Header -->
                     <nav class="navbar navbar-expand-lg h1-nav">
                         <a class="navbar-brand" href="#"><img src="resources/images/logo-black-jd.png" alt="Jaimal DUllat" /></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header1" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,38 +96,36 @@
         <!-- Section About Me -->
         <!-- ============= -->
         <section id="section-about" class="section-about pd-t-30">
-            <div class="testimonial2 spacer">
+            <div class="about-inner">
                 <div class="container">
                     <h1 class="mg-t-20 mg-b-20 text-center section-heading"><span>Background</span></h1>
-                    <div class="owl-carousel owl-theme testi2">
-                        <div class="item">
-                            <div class="row po-relative">
-                                <div class="col-lg-6 col-md-6 align-self-start" data-aos="fade-right" data-aos-duration="1200">
-                                    <p>
-                                        My name is <span class="text-success-gradiant">Jaimal Dullat</span> and I am a front-end developer, graduated from Conestoga College, Kitchener, Ontario. I have 2 years commercial experience working with clients from around the world, providing responsive front-end development and WordPress integrations.
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 align-self-start" data-aos="fade-right" data-aos-duration="1200">
+                                <p>
+                                    My name is <span class="text-success-gradiant">Jaimal Dullat</span> and I am a front-end developer, graduated from Conestoga College, Kitchener, Ontario. I have 2 years commercial experience working with clients from around the world, providing responsive front-end development and WordPress integrations.
+                                </p>
+                                <div class="mg-l-10">
+                                    I have following skills:-
+                                    <h5 class="text-success-gradiant mg-t-10">Front-End Technologies</h5>
+                                    <p>HTML/HTML5, CSS/CSS3, Bootstrap 4 ( CSS Framework ), JavaScript, ReactJS ( JS Framework ), jQuery ( JS Library ), AJAX</p>
+
+                                    <h5 class="text-success-gradiant mg-t-10">Back-End Technologies</h5>
+                                    <p>PHP, SQL, Mongodb, SQLite, NodeJS, APIs, Firebase</p>
+
+                                    <h5 class="text-success-gradiant mg-t-10">CMS</h5>
+                                    <p>Wordpress ( Theme development & plugin development )</p>
+
+                                    <h5 class="text-success-gradiant mg-t-10">Mobile Application Developmet</h5>
+                                    <p>Java, Objective-C, Swift</p>
+
+                                    <h5 class="text-success-gradiant mg-t-10">Tools</h5>
+                                    <p> Android Studio, XCode, GitHub, SSMS, WAMP, MS Visual Studio, Adobe Photoshop, FTP Clients, Microsoft Office ( Word, Excel, PowerPoint and SharePoint ), Brackets
                                     </p>
-                                    <div class="mg-l-10">
-                                        I have following skills:-
-                                        <h5 class="text-success-gradiant mg-t-10">Front-End Technologies</h5>
-                                        <p>HTML/HTML5, CSS/CSS3, Bootstrap 4 ( CSS Framework ), JavaScript, ReactJS ( JS Framework ), jQuery ( JS Library ), AJAX</p>
-
-                                        <h5 class="text-success-gradiant mg-t-10">Back-End Technologies</h5>
-                                        <p>PHP, SQL, Mongodb, SQLite, NodeJS, APIs, Firebase</p>
-
-                                        <h5 class="text-success-gradiant mg-t-10">CMS</h5>
-                                        <p>Wordpress ( Theme development & plugin development )</p>
-
-                                        <h5 class="text-success-gradiant mg-t-10">Mobile Application Developmet</h5>
-                                        <p>Java, Objective-C, Swift</p>
-
-                                        <h5 class="text-success-gradiant mg-t-10">Tools</h5>
-                                        <p> Android Studio, XCode, GitHub, SSMS, WAMP, MS Visual Studio, Adobe Photoshop, FTP Clients, Microsoft Office ( Word, Excel, PowerPoint and SharePoint ), Brackets
-                                        </p>
-                                    </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 image-thumb pd-10" data-aos="fade-left" data-aos-duration="1200">
-                                    <img src="resources/images/jaimal.jpg" alt="Jaimal Dullat" class="circle img-fluid" />
-                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 image-thumb pd-10" data-aos="fade-left" data-aos-duration="1200">
+                                <img src="resources/images/jaimal.jpg" alt="Jaimal Dullat" class="circle img-fluid" />
                             </div>
                         </div>
                     </div>
@@ -138,59 +136,65 @@
         <!-- Section work -->
         <!-- ============= -->
         <section class="section-work pd-t-30 bg-light" id="section-work">
-            <div class="spacer bg-light">
-                <div class="container">
+            <div class="bg-light">
+                <div class="container-fluid">
                     <h1 class="mg-t-20 mg-b-20 text-center  section-heading"><span>Projects</span></h1>
                     <div class="row m-t-40">
-                        <div class="col-md-4">
-                            <div class="card card-shadow" data-aos="flip-left" data-aos-duration="1200">
-                                <a href="https://www.certisync.com/" target="_blank" class="img-ho"><img class="card-img-top" src="resources/images/certisync.png" alt="wrappixel kit" /></a>
-                                <div class="card-body">
-                                    <h5 class="font-medium m-b-0">CertiSync.com</h5>
+                        <div class="col-md-4 project">
+                            <div class="project-inner blue" data-aos="flip-left" data-aos-duration="1200">
+                                <img class="card-img-top" src="resources/images/certisync.png" alt="CertiSync" />
+                                <div class="project-name">
+                                    <h2 class="font-medium mg-b-0">CertiSync.com</h2>
                                 </div>
+                                <a href="https://www.certisync.com/" target="_blank" class="img-ho"></a>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card card-shadow" data-aos="flip-up" data-aos-duration="1200">
-                                <a href="https://codepromotion.be/" target="_blank" class="img-ho"><img class="card-img-top" src="resources/images/codepromotion.PNG" alt="wrappixel kit" /></a>
-                                <div class="card-body">
-                                    <h5 class="font-medium m-b-0">Codepromotion.be</h5>
+                        <div class="col-md-4 project">
+                            <div class="project-inner blue" data-aos="flip-up" data-aos-duration="1200">
+                                <img class="card-img-top" src="resources/images/codepromotion.PNG" alt="CodePromotion" />
+                                <div class="project-name">
+                                    <h2 class="font-medium mg-b-0">Codepromotion.be</h2>
+                                </div>
+                                <a href="https://codepromotion.be/" target="_blank" class="img-ho"></a>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                        <div class="col-md-4 project">
+                            <div class="project-inner blue" data-aos="flip-right" data-aos-duration="1200">
+                                <img class="card-img-top" src="resources/images/thelifedreams.PNG" alt="TheLifeDreams" />
+                                <a href="https://www.thelifedreams.com/" target="_blank" class="img-ho"></a>
+                                <div class="project-name">
+                                    <h2 class="font-medium m-b-0">TheLifeDreams.com</h2>
                                 </div>
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-md-4">
-                            <div class="card card-shadow" data-aos="flip-right" data-aos-duration="1200">
-                                <a href="https://www.thelifedreams.com/" target="_blank" class="img-ho"><img class="card-img-top" src="resources/images/thelifedreams.PNG" alt="wrappixel kit" /></a>
-                                <div class="card-body">
-                                    <h5 class="font-medium m-b-0">TheLifeDreams.com</h5>
+                        <div class="col-md-4 project">
+                            <div class="project-inner blue" data-aos="flip-left" data-aos-duration="1200">
+                                <img class="card-img-top" src="resources/images/42works.PNG" alt="42Works" />
+                                <a href="https://42works.net/" target="_blank" class="img-ho"></a>
+                                <div class="project-name">
+                                    <h2 class="font-medium m-b-0">42Works.net</h2>
                                 </div>
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-md-4">
-                            <div class="card card-shadow" data-aos="flip-left" data-aos-duration="1200">
-                                <a href="https://42works.net/" target="_blank" class="img-ho"><img class="card-img-top" src="resources/images/42works.PNG" alt="wrappixel kit" /></a>
-                                <div class="card-body">
-                                    <h5 class="font-medium m-b-0">42Works.net</h5>
+                        <div class="col-md-4 project">
+                            <div class="project-inner blue" data-aos="flip-right" data-aos-duration="1200">
+                                <img class="card-img-top" src="resources/images/nakedtan.PNG" alt="NakedTan" />
+                                <a href="https://www.nakedtan.com.au/" target="_blank" class="img-ho"></a>
+                                <div class="project-name">
+                                    <h2 class="font-medium m-b-0">Nakedtan.com.au</h2>
                                 </div>
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-md-4">
-                            <div class="card card-shadow" data-aos="flip-right" data-aos-duration="1200">
-                                <a href="https://www.nakedtan.com.au/" target="_blank" class="img-ho"><img class="card-img-top" src="resources/images/nakedtan.PNG" alt="wrappixel kit" /></a>
-                                <div class="card-body">
-                                    <h5 class="font-medium m-b-0">Nakedtan.com.au</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Column -->
-                        <div class="col-md-4">
-                            <div class="card card-shadow" data-aos="flip-up" data-aos-duration="1200">
-                                <a href="http://visagecollaborative.com/" target="_blank" class="img-ho"><img class="card-img-top" src="resources/images/visagecollaborative.PNG" alt="wrappixel kit" /></a>
-                                <div class="card-body">
-                                    <h5 class="font-medium m-b-0">Visagecollaborative.com</h5>
+                        <div class="col-md-4 project">
+                            <div class="project-inner blue" data-aos="flip-up" data-aos-duration="1200">
+                                <img class="card-img-top" src="resources/images/visagecollaborative.PNG" alt="Visagecollaborative" />
+                                <a href="http://visagecollaborative.com/" target="_blank" class="img-ho"></a>
+                                <div class="project-name">
+                                    <h2 class="font-medium m-b-0">Visagecollaborative.com</h2>
                                 </div>
                             </div>
                         </div>
@@ -203,38 +207,35 @@
         <!-- Contact Me  -->
         <!-- =========== -->
         <section class="section-contact" id="section-contact">
-            <div class="contact3 mini-spacer">
-                <div class="row">
-                    <div class="container">
-                        <h1 class="mg-t-20 mg-b-20 text-center  section-heading"><span>Contact Me</span></h1>
-                        <div class="row m-0">
-                            <div class="col-md-9 mx-auto">
-                                <div class="contact-box m-l-30">
-
-                                    <form class="mg-t-30" data-aos="zoom-in" data-aos-duration="1200">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group mg-t-15">
-                                                    <input class="form-control" type="text" placeholder="name">
-                                                </div>
-                                                <div class="form-group mg-t-15">
-                                                    <input class="form-control" type="email" placeholder="email address">
-                                                </div>
-                                                <div class="form-group mg-t-15">
-                                                    <input class="form-control" type="text" placeholder="phone">
-                                                </div>
+            <div class="row">
+                <div class="container">
+                    <h1 class="mg-t-20 mg-b-20 text-center section-heading"><span>Contact Me</span></h1>
+                    <div class="row m-0">
+                        <div class="col-md-9 mx-auto">
+                            <div class="contact-box m-l-30">
+                                <form name="contact-me" class="mg-t-30" method="post" data-aos="zoom-in" data-aos-duration="1200">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group mg-t-15">
+                                                <input class="form-control" type="text" placeholder="name" required>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mg-t-15">
-                                                    <textarea class="form-control" rows="6" placeholder="message"></textarea>
-                                                </div>
+                                            <div class="form-group mg-t-15">
+                                                <input class="form-control" type="email" placeholder="email address" required>
                                             </div>
-                                            <div class="col-md-12">
-                                                <button type="submit" class="btn btn-success-gradiant m-t-20 btn-arrow"><span> SUBMIT <i class="ti-arrow-right"></i></span></button>
+                                            <div class="form-group mg-t-15">
+                                                <input class="form-control" type="text" placeholder="phone">
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mg-t-15">
+                                                <textarea class="form-control" rows="6" placeholder="message" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-success-gradiant m-t-20 btn-arrow"><span> SUBMIT <i class="ti-arrow-right"></i></span></button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -245,7 +246,7 @@
         <!-- End Section Contact  -->
         <!-- ==================== -->
         <footer class="section-footer">
-            <div class="footer1 font-14">
+            <div class="footer-inner font-14">
                 <div class="f1-bottom-bar">
                     <div class="container">
                         <div class=" text-center">© All Rights Reserved by JSDullat.com
@@ -261,7 +262,8 @@
         <!-- ============ -->
         <!-- All Jquery -->
         <!-- ============ -->
-        <script src="vendors/jquery/dist/jquery.min.js"></script>
+        <!--<script src="vendors/jquery/dist/jquery.min.js"></script>-->
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <!-- Bootstrap popper Core JavaScript -->
         <script src="vendors/popper/dist/popper.min.js"></script>
         <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -271,9 +273,6 @@
         <!--Custom JavaScript -->
         <script src="resources/js/custom.js"></script>
         <script src="resources/js/type.js"></script>
-        <!-- ================= -->
-        <!-- This page plugins -->
-        <!-- ================= -->
 </body>
 
 </html>

@@ -30,7 +30,7 @@ body {
   background: #1da4e2;
   line-height: 260px;
   text-align: center;
-  color: #fff;
+  color: var(--white);
 }
 
 @media screen and (max-width: 800px) {
