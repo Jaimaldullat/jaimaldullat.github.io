@@ -253,12 +253,11 @@ span.span-word{
         padding: 4px;
         margin-bottom: -1px;
         &.active {
-          border-top: 1px solid $tab-btn-border-color;
-          border-left: 1px solid $tab-btn-border-color;
-          border-right: 1px solid $tab-btn-border-color;
-          border-bottom: 1px solid $secondary-color;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+          &::after {
+            content: "";
+            border: 2px solid $primary-color;
+            width: 40%;
+          }
         }
       }
 
